@@ -61,11 +61,11 @@ gulp.task("webpack:build-dev", function(callback) {
 gulp.task("webpack-dev-server", function(callback) {
   console.log(config[0].output.publicPath);
   // Start a webpack-dev-server
-  new WebpackDevServer(webpack(Object.assign(config, {
+  new WebpackDevServer(webpack(Object.assign(config[0], {
     entry: [
       'webpack-dev-server/client?http://localhost:8080',
       'webpack/hot/only-dev-server',
-      './src/module'
+      './src/module.js'
     ],
     debug: true,
     devtool: 'eval',

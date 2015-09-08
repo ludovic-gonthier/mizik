@@ -6,6 +6,9 @@
     "name": "Ludovic Gonthier",
     "email": "gonthier.ludovic@gmail.com"
   },
+  "scripts": {
+    "webpack:dev": "webpack-dev-server --hot --inline --progress --colors"
+  },
   "license": "MIT License",
   "main": "app.js",
   "dependencies": {
@@ -23,12 +26,13 @@
     "react-tools": "^0.10.0",
     "react-transform-webpack-hmr": "^0.1.4",
     "redux": "^2.0.0",
-    "webpack": "^1.12.1"
+    "webpack": "^1.12.1",
+    "webpack-dev-server": "^1.10.1"
   },
   "devDependencies": {
     "babel": "^5.8.23",
-    "gulp-babel": "^5.2.1"
-    "webpack-dev-server": "^1.10.1"
+    "gulp-babel": "^5.2.1",
+    "redux-devtools": "^2.1.0"
   },
   "repository": {
     "type": "git",
