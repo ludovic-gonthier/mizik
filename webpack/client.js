@@ -1,24 +1,27 @@
 import webpack from 'webpack';
 import { resolve } from 'path';
+import { readdirSync } from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const ROOT = resolve(__dirname, '..');
+import config from '../config';
+
+var modules = {};
+
+readdirSync('node_modules')
+  .filter(x => ['.bin'].indexOf(x) === -1)
+  .forEach(module => modules[module] = 'commonjs ' + module);
 
 module.exports = {
-  debug: true,
-  devServer: {
-    contentBase: resolve(ROOT, 'build'),
+  entry: {
+    main: config.get('project.client.entry'),
   },
   devtool: 'eval',
-  entry: {
-    application: resolve(ROOT, 'src', 'module.js'),
-  },
   module: {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        include: resolve(ROOT, 'src'),
-        loaders: ['babel?optional[]=runtime'],
+        exclude: /(node_modules|bower_components)/,
+        loaders: ['react-hot-loader', 'babel?optional[]=runtime'],
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3|\.ogg$/,
@@ -31,27 +34,26 @@ module.exports = {
     ],
   },
   output: {
-    path: resolve(ROOT, 'build'),
+    path: config.get('project.client.output'),
     filename: '[name].js',
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
-    new HtmlWebpackPlugin({
-      inject: 'body',
-      template: resolve(ROOT, 'src', 'views', 'index.html'),
-    }),
   ],
+  // externals: modules,
   resolve: {
-    root: resolve(ROOT, 'src'),
+    root: config.get('root.path'),
     extensions: ['', '.js', '.jsx'],
     alias: [
       'actions',
+      'containers',
       'components',
       'assets',
       'reducers',
       'stores',
       'views',
     ],
+    modulesDirectories: ['node_modules', 'src'],
   },
   target: 'web',
 };

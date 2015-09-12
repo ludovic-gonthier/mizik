@@ -7,7 +7,8 @@
     "email": "gonthier.ludovic@gmail.com"
   },
   "scripts": {
-    "webpack:dev": "webpack-dev-server --hot --inline --progress --colors"
+    "webpack:dev": "webpack-dev-server --hot --inline --progress --colors",
+    "webpack": "webpack -p"
   },
   "license": "MIT",
   "main": "app.js",
@@ -17,11 +18,20 @@
     "babel-loader": "^5.3.2",
     "babel-plugin-react-transform": "^1.0.3",
     "babel-runtime": "^5.8.20",
+    "compression": "^1.5.2",
     "css-loader": "^0.17.0",
+    "eslint": "^1.4.2",
+    "eslint-loader": "^1.0.0",
+    "express": "^4.13.3",
+    "express-react-views": "^0.8.2",
     "file-loader": "^0.8.4",
     "gulp": "^3.9.0",
+    "gulp-live-server": "0.0.28",
+    "gulp-nodemon": "^2.0.4",
     "gulp-util": "^3.0.6",
     "html-webpack-plugin": "^1.6.1",
+    "json-loader": "^0.5.2",
+    "nodemon": "^1.5.0",
     "react": "^0.13.3",
     "react-redux": "^2.1.0",
     "react-tools": "^0.10.0",
@@ -34,10 +44,13 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.1",
+    "del": "^2.0.2",
     "eslint-config-airbnb": "0.0.8",
     "eslint-plugin-react": "^3.3.2",
     "gulp-babel": "^5.2.1",
     "gulp-eslint": "^1.0.0",
+    "react-hot-loader": "^1.3.0",
+    "redux-devtools": "^2.1.2"
   },
   "repository": {
     "type": "git",

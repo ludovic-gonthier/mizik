@@ -1,0 +1,13 @@
+.volume {
+    width: 5px;
+    height: 100px;
+    background-color: grey;
+    cursor: pointer;
+}
+
+.cursor {
+    display: block;
+    height: 50px;
+    background-color: black;
+    bottom: 0;
+}
