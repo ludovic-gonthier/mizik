@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var eslint = require('gulp-eslint');
 var webpack = require("webpack");
 var WebpackDevServer = require("webpack-dev-server");
 
@@ -10,6 +11,19 @@ var config = require('./webpack.config.js');
 gulp.task('default', ['webpack-dev-server', 'webpack:watch'])
 gulp.task("webpack:watch", ["webpack:build-dev"], function() {
   gulp.watch(["{src,webpack}/**/*"], ["webpack:build-dev"]);
+});
+
+gulp.task('lint', function () {
+  return gulp.src(["{src,webpack}/**/*.{js,jsx}"])
+    .pipe(eslint())
+    .pipe(eslint.formatEach())
+    .pipe(eslint.failAfterError());
+});
+gulp.task('lint:watch', function () {
+  return gulp.watch(["{src,webpack}/**/*"])
+    .pipe(eslint())
+    .pipe(eslint.formatEach())
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task("build", ["webpack:build"]);
